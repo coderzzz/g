@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="JoinGameViewController">
+            <connections>
+                <outlet property="gamebtn" destination="FxY-Up-eCW" id="Ltb-Wn-yHa"/>
+                <outlet property="joinbtn" destination="mwQ-FU-Cuw" id="fBX-r6-s1L"/>
+                <outlet property="tableview" destination="cb8-0k-ZGL" id="Gq8-jE-i0V"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="cb8-0k-ZGL">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="453"/>
+                    <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.93725490199999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="Y6G-UO-eSd"/>
+                        <outlet property="delegate" destination="-1" id="2Ez-y8-FHl"/>
+                    </connections>
+                </tableView>
+                <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mwQ-FU-Cuw">
+                    <rect key="frame" x="160" y="454" width="160" height="50"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="Lr2-xf-4Zl"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <state key="normal" title="我要报名">
+                        <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="btnaction:" destination="-1" eventType="touchUpInside" id="t7h-s1-0oj"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FxY-Up-eCW">
+                    <rect key="frame" x="0.0" y="454" width="160" height="50"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <state key="normal" title="我要约战">
+                        <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="btnaction:" destination="-1" eventType="touchUpInside" id="Kvh-cw-Rid"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="mwQ-FU-Cuw" firstAttribute="top" secondItem="cb8-0k-ZGL" secondAttribute="bottom" constant="1" id="5Tn-yz-wrd"/>
+                <constraint firstItem="mwQ-FU-Cuw" firstAttribute="top" secondItem="cb8-0k-ZGL" secondAttribute="bottom" constant="1" id="8jc-ME-ONT"/>
+                <constraint firstItem="FxY-Up-eCW" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="HMl-Z0-GJ3"/>
+                <constraint firstItem="mwQ-FU-Cuw" firstAttribute="leading" secondItem="FxY-Up-eCW" secondAttribute="trailing" id="LDX-hv-1nr"/>
+                <constraint firstItem="mwQ-FU-Cuw" firstAttribute="width" secondItem="FxY-Up-eCW" secondAttribute="width" id="MhO-0X-Zy0"/>
+                <constraint firstItem="cb8-0k-ZGL" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="PJf-Tr-u0M"/>
+                <constraint firstAttribute="trailing" secondItem="mwQ-FU-Cuw" secondAttribute="trailing" id="d0t-WM-bOk"/>
+                <constraint firstItem="mwQ-FU-Cuw" firstAttribute="leading" secondItem="FxY-Up-eCW" secondAttribute="trailing" id="gLL-gK-aAq"/>
+                <constraint firstAttribute="bottom" secondItem="FxY-Up-eCW" secondAttribute="bottom" id="jCH-T3-bkc"/>
+                <constraint firstAttribute="trailing" secondItem="cb8-0k-ZGL" secondAttribute="trailing" id="kkj-UQ-69h"/>
+                <constraint firstItem="FxY-Up-eCW" firstAttribute="top" secondItem="cb8-0k-ZGL" secondAttribute="bottom" constant="1" id="oGL-S8-wqU"/>
+                <constraint firstItem="mwQ-FU-Cuw" firstAttribute="height" secondItem="FxY-Up-eCW" secondAttribute="height" id="pvv-NX-axf"/>
+                <constraint firstAttribute="bottom" secondItem="mwQ-FU-Cuw" secondAttribute="bottom" id="tuA-eb-a95"/>
+                <constraint firstItem="cb8-0k-ZGL" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="xHR-m9-1B2"/>
+            </constraints>
+            <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+            <point key="canvasLocation" x="325" y="135"/>
+        </view>
+    </objects>
+</document>
