@@ -23,11 +23,14 @@
 {
     NSMutableArray *list;
     int _surplusSecond;
+    BOOL check;
 }
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     _surplusSecond = 60;
+    check = YES;
     [self.registbtn cornerRadius:5.0];
     self.headview.backgroundColor = BaseColor;
     self.footview.backgroundColor = Backgroundcolor;
@@ -42,7 +45,18 @@
 }
 
 
+- (IBAction)check:(UIButton *)sender {
+    
+    sender.selected = !sender.selected;
+    if (sender.selected) {
+        
+        [sender setImage:nil forState:UIControlStateNormal];
+    }else{
+        [sender setImage:[UIImage imageNamed:@"扫描-勾选"] forState:UIControlStateNormal];
+    }
+    check = !sender.selected;
 
+}
 - (IBAction)rules:(id)sender {
 }
 - (IBAction)regist:(id)sender {
@@ -73,8 +87,14 @@
         [self showHudWithString:@"请输入相同的密码"];
         return;
     }
+    if (!check) {
+        
+        [self showHudWithString:@"请同意用户协议"];
+        return;
+    }
     [LoginService shareInstanced].registSuccess = ^(id obj){
         
+        [self showHudWithString:@"注册成功"];
         [self.navigationController popViewControllerAnimated:YES];
     };
     [LoginService shareInstanced].registFailure = ^(id obj){
@@ -144,9 +164,17 @@
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
     LoginCell *cell = [tableView dequeueReusableCellWithIdentifier:@"login"];
     cell.imagv.image = [UIImage imageNamed:list[indexPath.row][0]];
     cell.tf.placeholder =list[indexPath.row][1];
+    if (indexPath.row == 1 || indexPath.row == 2) {
+        
+        cell.tf.keyboardType = UIKeyboardTypeNumberPad;
+    }
+    else{
+        cell.tf.keyboardType =UIKeyboardTypeDefault;
+    }
     if (indexPath.row == 2) {
         
         cell.wordbtn.hidden = NO;

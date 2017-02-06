@@ -101,6 +101,13 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     LoginCell *cell = [tableView dequeueReusableCellWithIdentifier:@"login"];
     cell.imagv.image = [UIImage imageNamed:list[indexPath.row][0]];
+    if (indexPath.row == 0) {
+        
+        cell.tf.keyboardType = UIKeyboardTypeNumberPad;
+    }
+    else{
+        cell.tf.keyboardType =UIKeyboardTypeDefault;
+    }
     cell.tf.placeholder =list[indexPath.row][1];
     return cell;
 }

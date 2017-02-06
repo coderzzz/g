@@ -57,6 +57,7 @@
     ReNameViewController *vc = [[ReNameViewController alloc]init];
     vc.delegate = self;
     vc.title = @"修改昵称";
+    vc.text = @"请输入您的昵称";
     vc.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:vc animated:YES];
     
@@ -140,6 +141,7 @@
             
             [[LoginService shareInstanced]saveUserModelWithDictionary:@{@"nickname":name}];
             [self hideHud];
+            [self showHudWithString:@"修改成功"];
             [self.namebtn setTitle:name forState:UIControlStateNormal];
         };
         [ExamService shareInstenced].getErrorTitleFailure = ^(id obj){
@@ -176,7 +178,14 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
 
     UITableViewCell *cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:nil];
-    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    if (indexPath.row == 0 && indexPath.section == 0) {
+        
+         cell.accessoryType = UITableViewCellAccessoryNone;
+    }
+    else{
+     
+         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     if (indexPath.section == 0) {
         cell.textLabel.text = leflist[indexPath.section][indexPath.row];
@@ -215,6 +224,7 @@
             ReNameViewController *vc = [[ReNameViewController alloc]init];
             vc.delegate = self;
             vc.title = @"修改年龄";
+            vc.text = @"请输入您的年龄";
             vc.hidesBottomBarWhenPushed = YES;
             [self.navigationController pushViewController:vc animated:YES];
         }

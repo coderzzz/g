@@ -184,7 +184,7 @@
     else{
         
         ListCell *cell = [tableView dequeueReusableCellWithIdentifier:@"list"];
-        MybattModel *data = mgs[indexPath.row];
+        MybattModel *data = mbs[indexPath.row];
         [cell.imagv sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",Img_URL_Prefix,data.battle_thumb]] placeholderImage:Aavatar];
         cell.titlelab.text = data.battle_title;
         cell.contentlab.text = data.nickname;

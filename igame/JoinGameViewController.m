@@ -123,7 +123,13 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
     BattleModel *data= list[indexPath.row];
-    battle_id = data.id;
+    if ([battle_id isEqualToString:data.id]) {
+        
+        battle_id = @"999";
+    }else{
+     
+        battle_id = data.id;
+    }
     [self.tableview reloadData];
     
 }

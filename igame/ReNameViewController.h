@@ -13,4 +13,5 @@
 @interface ReNameViewController : BaseViewController
 @property (weak, nonatomic) IBOutlet UITextField *tf;
 @property (weak, nonatomic) id<ReNameViewControllerDelegate> delegate;
+@property (copy, nonatomic) NSString *text;
 @end

@@ -54,29 +54,44 @@
                         <action selector="regist:" destination="-1" eventType="touchUpInside" id="lo2-Qz-xGR"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o8d-Kq-8wP">
-                    <rect key="frame" x="118" y="19" width="85" height="30"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o8d-Kq-8wP">
+                    <rect key="frame" x="122" y="27" width="77" height="22"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="85" id="1Ub-av-te3"/>
-                        <constraint firstAttribute="height" constant="30" id="9MX-6T-tCS"/>
+                        <constraint firstAttribute="width" constant="77" id="1Ub-av-te3"/>
+                        <constraint firstAttribute="height" constant="22" id="9MX-6T-tCS"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="35" maxY="0.0"/>
                     <state key="normal" title="用户协议">
                         <color key="titleColor" red="0.0" green="0.69803921570000005" blue="0.61176470589999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </state>
+                    <state key="selected" title="用户协议"/>
                     <connections>
                         <action selector="rules:" destination="-1" eventType="touchUpInside" id="N4t-HS-Qi6"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iEo-eA-bF5">
+                    <rect key="frame" x="82" y="27" width="32" height="22"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="32" id="JpQ-wL-qyJ"/>
+                        <constraint firstAttribute="height" constant="22" id="xXE-rf-8Q5"/>
+                    </constraints>
+                    <state key="normal" image="扫描-勾选"/>
+                    <connections>
+                        <action selector="check:" destination="-1" eventType="touchUpInside" id="0F5-Fv-RD3"/>
                     </connections>
                 </button>
             </subviews>
             <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.93725490199999995" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
+                <constraint firstItem="rkE-3O-aOe" firstAttribute="top" secondItem="iEo-eA-bF5" secondAttribute="bottom" constant="8" id="5vZ-km-n3U"/>
                 <constraint firstAttribute="bottom" secondItem="rkE-3O-aOe" secondAttribute="bottom" constant="24" id="6Oy-4z-O3Q"/>
                 <constraint firstItem="rkE-3O-aOe" firstAttribute="leading" secondItem="eDf-zG-Dka" secondAttribute="leading" constant="30" id="71W-CB-mEd"/>
                 <constraint firstItem="rkE-3O-aOe" firstAttribute="top" secondItem="o8d-Kq-8wP" secondAttribute="bottom" constant="8" id="8nf-KD-KkJ"/>
                 <constraint firstAttribute="trailing" secondItem="rkE-3O-aOe" secondAttribute="trailing" constant="30" id="C1f-7n-p5r"/>
-                <constraint firstAttribute="trailing" secondItem="o8d-Kq-8wP" secondAttribute="trailing" constant="117" id="KYR-kF-0Co"/>
-                <constraint firstItem="o8d-Kq-8wP" firstAttribute="top" secondItem="eDf-zG-Dka" secondAttribute="top" constant="19" id="QNF-Bm-vZF"/>
+                <constraint firstItem="o8d-Kq-8wP" firstAttribute="top" secondItem="eDf-zG-Dka" secondAttribute="top" constant="27" id="QNF-Bm-vZF"/>
+                <constraint firstItem="o8d-Kq-8wP" firstAttribute="leading" secondItem="iEo-eA-bF5" secondAttribute="trailing" constant="8" id="Zsl-cn-13K"/>
+                <constraint firstItem="o8d-Kq-8wP" firstAttribute="centerX" secondItem="eDf-zG-Dka" secondAttribute="centerX" id="fAY-qo-mks"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="339" y="516.5"/>
@@ -146,5 +161,6 @@
     <resources>
         <image name="logo" width="126" height="126"/>
         <image name="多边形-1-拷贝" width="21" height="13"/>
+        <image name="扫描-勾选" width="14" height="10"/>
     </resources>
 </document>

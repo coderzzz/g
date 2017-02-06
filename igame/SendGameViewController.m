@@ -37,7 +37,7 @@
     self.title = @"我要约战";
     UINib *nib =[UINib nibWithNibName:@"LoginCell" bundle:nil];
     [self.tableview registerNib:nib forCellReuseIdentifier:@"login"];
-    list =[@[@[@"登录-手机号",@"请输入手机账号"],@[@"智能手柄-使用记录",@"请输入参赛时间"]]mutableCopy];
+    list =[@[@[@"登录-手机号",@"请输入手机账号"],@[@"智能手柄-使用记录",@"请输入参赛时间，如：2017-12-29"]]mutableCopy];
 }
 
 - (IBAction)send:(UIButton *)sender {
@@ -50,11 +50,11 @@
         [self showHudWithString:@"请输入手机号码"];
         return;
     }
-//    if (!(time.length>0)) {
-//        
-//        [self showHudWithString:@"请输入参赛时间"];
-//        return;
-//    }
+    if (!(time.length>0)) {
+        
+        [self showHudWithString:@"请输入参赛时间"];
+        return;
+    }
     if (!(self.tf.text.length>0)) {
         
         [self showHudWithString:@"请输入标题"];
@@ -84,7 +84,7 @@
                                                      @"phone":phone,
                                                      @"battle_title":self.tf.text,
                                                      @"battle_thumb":base64Sting,
-                                                     @"add_time":@"2017-12-29"
+                                                     @"add_time":time
                                                      
                                                      }];
     
@@ -135,6 +135,13 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     LoginCell *cell = [tableView dequeueReusableCellWithIdentifier:@"login"];
+    if (indexPath.row == 0) {
+        
+        cell.tf.keyboardType = UIKeyboardTypeNumberPad;
+    }
+    else{
+        cell.tf.keyboardType =UIKeyboardTypeDefault;
+    }
     cell.imagv.image = [UIImage imageNamed:list[indexPath.row][0]];
     cell.tf.placeholder =list[indexPath.row][1];
     return cell;
