@@ -7,8 +7,10 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PersonViewController">
             <connections>
+                <outlet property="footerview" destination="iGj-PF-X1s" id="cjf-W3-03N"/>
                 <outlet property="headbtn" destination="gvy-Pz-ANt" id="NK1-WR-k7L"/>
                 <outlet property="headview" destination="1kF-yE-T8O" id="Xae-cg-GIW"/>
+                <outlet property="logoutbtn" destination="ViM-FF-kmy" id="BTa-rl-ru6"/>
                 <outlet property="namebtn" destination="K0F-9m-ZEh" id="TIJ-sJ-lBU"/>
                 <outlet property="tableview" destination="CHQ-GM-BPd" id="USU-2r-AT9"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -80,6 +82,35 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="129" y="2"/>
+        </view>
+        <view contentMode="scaleToFill" id="iGj-PF-X1s">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="95"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ViM-FF-kmy">
+                    <rect key="frame" x="27" y="28" width="266" height="40"/>
+                    <color key="backgroundColor" red="0.08235294118" green="0.61176470589999998" blue="0.54117647059999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="ujd-3y-A1a"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <state key="normal" title="退出登录">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="loginout:" destination="-1" eventType="touchUpInside" id="aDJ-47-PUw"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="ViM-FF-kmy" firstAttribute="centerY" secondItem="iGj-PF-X1s" secondAttribute="centerY" id="Bbd-Zl-spz"/>
+                <constraint firstAttribute="trailing" secondItem="ViM-FF-kmy" secondAttribute="trailing" constant="27" id="Kpy-K4-oQR"/>
+                <constraint firstItem="ViM-FF-kmy" firstAttribute="leading" secondItem="iGj-PF-X1s" secondAttribute="leading" constant="27" id="aTX-do-u4b"/>
+                <constraint firstItem="ViM-FF-kmy" firstAttribute="centerX" secondItem="iGj-PF-X1s" secondAttribute="centerX" id="gL4-zv-pH8"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="273" y="278.5"/>
         </view>
     </objects>
     <resources>

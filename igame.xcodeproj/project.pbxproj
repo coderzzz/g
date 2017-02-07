@@ -36,6 +36,7 @@
 		E2315D8D1DFF93FA00907978 /* MySaveFirstTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E2315D881DFF93FA00907978 /* MySaveFirstTableViewCell.xib */; };
 		E2315D8E1DFF93FA00907978 /* MySaveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E2315D8A1DFF93FA00907978 /* MySaveViewController.m */; };
 		E2315D8F1DFF93FA00907978 /* MySaveViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E2315D8B1DFF93FA00907978 /* MySaveViewController.xib */; };
+		E23AD4A61E49BFE3006BB668 /* NSObject+foword.m in Sources */ = {isa = PBXBuildFile; fileRef = E23AD4A51E49BFE3006BB668 /* NSObject+foword.m */; };
 		E24323731E07747100E0782B /* ReNameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E24323711E07747100E0782B /* ReNameViewController.m */; };
 		E24323741E07747100E0782B /* ReNameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E24323721E07747100E0782B /* ReNameViewController.xib */; };
 		E24323781E07777F00E0782B /* SexViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E24323761E07777F00E0782B /* SexViewController.m */; };
@@ -170,6 +171,8 @@
 		E2315D891DFF93FA00907978 /* MySaveViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MySaveViewController.h; sourceTree = "<group>"; };
 		E2315D8A1DFF93FA00907978 /* MySaveViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MySaveViewController.m; sourceTree = "<group>"; };
 		E2315D8B1DFF93FA00907978 /* MySaveViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MySaveViewController.xib; sourceTree = "<group>"; };
+		E23AD4A41E49BFE3006BB668 /* NSObject+foword.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+foword.h"; sourceTree = "<group>"; };
+		E23AD4A51E49BFE3006BB668 /* NSObject+foword.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+foword.m"; sourceTree = "<group>"; };
 		E24323701E07747100E0782B /* ReNameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReNameViewController.h; sourceTree = "<group>"; };
 		E24323711E07747100E0782B /* ReNameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReNameViewController.m; sourceTree = "<group>"; };
 		E24323721E07747100E0782B /* ReNameViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ReNameViewController.xib; sourceTree = "<group>"; };
@@ -639,6 +642,8 @@
 				E24323841E07AD1100E0782B /* IntroduceViewController.h */,
 				E24323851E07AD1100E0782B /* IntroduceViewController.m */,
 				E24323861E07AD1100E0782B /* IntroduceViewController.xib */,
+				E23AD4A41E49BFE3006BB668 /* NSObject+foword.h */,
+				E23AD4A51E49BFE3006BB668 /* NSObject+foword.m */,
 			);
 			name = PersonTab;
 			sourceTree = "<group>";
@@ -888,6 +893,7 @@
 				E2D40E4E1E1F87660030F069 /* RankingModel.m in Sources */,
 				E2315D841DFEAA7200907978 /* SendBlogViewController.m in Sources */,
 				E2315D7F1DFEA5E500907978 /* CommonCell.m in Sources */,
+				E23AD4A61E49BFE3006BB668 /* NSObject+foword.m in Sources */,
 				E2E40FE61DF8F71F0056CF3C /* main.m in Sources */,
 				E2D40DE91E1F33E60030F069 /* UINavigationController+Visitors.m in Sources */,
 				E2E410071DF8FC880056CF3C /* HomeViewController.m in Sources */,

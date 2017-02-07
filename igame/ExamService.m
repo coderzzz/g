@@ -234,31 +234,16 @@
 
 - (void)getPracticeWithTypeId:(NSString *)typeId uid:(NSString *)uid{
     
-    NSDictionary *dic = @{@"type":typeId,@"uid":uid};
+    NSDictionary *dic = @{@"age":typeId,@"uid":uid};
     
     [[HttpService sharedInstance]getPractice:dic completionBlock:^(id objdct) {
         
         
         if (objdct) {
             
-            NSMutableArray *ary = objdct[@"title"];
-            
-            
-            NSMutableArray *dataArray = [NSMutableArray array];
-            
-//            for (NSDictionary *dic in ary) {
-//                
-//                ChapterPracticeModel *model = [[ChapterPracticeModel alloc]initWithDictionary:dic error:nil];
-//                
-//                if (model) {
-//                    
-//                    [dataArray addObject:model];
-//                }
-//            }
-            
             if (_getPracticeSuccess) {
                 
-                _getPracticeSuccess(dataArray);
+                _getPracticeSuccess(objdct);
             }
             
         }

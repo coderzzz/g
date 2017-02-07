@@ -156,7 +156,7 @@
     
     //Right button
     IQBarButtonItem *doneButton = [[IQBarButtonItem alloc] initWithImage:image style:UIBarButtonItemStyleDone target:target action:action];
-//    [items addObject:doneButton];
+    [items addObject:doneButton];
     
     //  Adding button to toolBar.
     [toolbar setItems:items];
@@ -201,7 +201,7 @@
     
     //Right button
     IQBarButtonItem *doneButton =[[IQBarButtonItem alloc] initWithTitle:text style:UIBarButtonItemStyleDone target:target action:action];
-//    [items addObject:doneButton];
+    [items addObject:doneButton];
     
     //  Adding button to toolBar.
     [toolbar setItems:items];
@@ -253,7 +253,7 @@
     //Done button
     IQBarButtonItem *doneButton = [[IQBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:target action:action];
 #warning cancle done
-//    [items addObject:doneButton];
+    [items addObject:doneButton];
     
     //  Adding button to toolBar.
     [toolbar setItems:items];
@@ -310,7 +310,7 @@
     
     //Right button
     IQBarButtonItem *doneButton =[[IQBarButtonItem alloc] initWithTitle:rightTitle style:UIBarButtonItemStyleDone target:target action:rightAction];
-//    [items addObject:doneButton];
+    [items addObject:doneButton];
     
     //  Adding button to toolBar.
     [toolbar setItems:items];
@@ -367,7 +367,7 @@
     
     //Done button
     IQBarButtonItem *doneButton =[[IQBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:target action:doneAction];
-//    [items addObject:doneButton];
+    [items addObject:doneButton];
     
     //  Adding button to toolBar.
     [toolbar setItems:items];
@@ -484,7 +484,7 @@
     
     //Done button
     IQBarButtonItem *doneButton =[[IQBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:target action:doneAction];
-//	[items addObject:doneButton];
+	[items addObject:doneButton];
 	
     //  Adding button to toolBar.
     [toolbar setItems:items];
@@ -601,7 +601,7 @@
     
     //Right button
     IQBarButtonItem *doneButton = [[IQBarButtonItem alloc] initWithImage:rightButtonImage style:UIBarButtonItemStyleDone target:target action:rightButtonAction];
-//    [items addObject:doneButton];
+    [items addObject:doneButton];
     
     //  Adding button to toolBar.
     [toolbar setItems:items];
@@ -713,7 +713,7 @@
     
     //Right button
     IQBarButtonItem *doneButton =[[IQBarButtonItem alloc] initWithTitle:rightButtonTitle style:UIBarButtonItemStyleDone target:target action:rightButtonAction];
-//    [items addObject:doneButton];
+    [items addObject:doneButton];
     
     //  Adding button to toolBar.
     [toolbar setItems:items];

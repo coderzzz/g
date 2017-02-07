@@ -37,7 +37,7 @@
 #define GetForum                              @"my_battle"
 #define CourseDetail                          @"my_sign"
 #define Comment                          @"my_news"
-
+#define Practice                          @"updateAge"
 
 
 
@@ -95,7 +95,7 @@
 #define WxPay                       @"WxPay"
 
 
-#define Practice                          @"Practice"
+
 #define ExamGrade                              @"ExamGrade"
 
 

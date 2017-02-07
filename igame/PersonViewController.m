@@ -13,11 +13,16 @@
 #import "MyGameViewController.h"
 #import "IntroduceViewController.h"
 #import "UIButton+WebCache.h"
-@interface PersonViewController ()<UITableViewDelegate,UITableViewDataSource,SexViewControllerDelegate,ReNameViewControllerDelegate,UIActionSheetDelegate>
+#import "LoginViewController.h"
+#import "AppDelegate.h"
+#import "BaseNavigationController.h"
+@interface PersonViewController ()<UITableViewDelegate,UITableViewDataSource,SexViewControllerDelegate,ReNameViewControllerDelegate,UIActionSheetDelegate,UIAlertViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableview;
 @property (strong, nonatomic) IBOutlet UIView *headview;
 @property (weak, nonatomic) IBOutlet UIButton *headbtn;
 @property (weak, nonatomic) IBOutlet UIButton *namebtn;
+@property (strong, nonatomic) IBOutlet UIView *footerview;
+@property (weak, nonatomic) IBOutlet UIButton *logoutbtn;
 
 @end
 
@@ -33,13 +38,18 @@
     [super viewWillAppear:animated];
     [self setupui];
 }
+- (IBAction)loginout:(id)sender{
+    
+    UIAlertView *alert =[[UIAlertView alloc]initWithTitle:@"提示" message:@"是否退出登录？" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+    [alert show];
+}
 
 - (void)setupui{
     
     model = [[LoginService shareInstanced]getUserModel];
     [self.headbtn sd_setBackgroundImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",Img_URL_Prefix,model.avatar]] forState:UIControlStateNormal placeholderImage:Aavatar];
     [self.namebtn setTitle:model.nickname forState:UIControlStateNormal];
-    rightlist = [@[@[model.phone,[model.sex isEqualToString:@"2"]?@"女":@"男",@"21"],@[@"我的帖子",@"我的约战"],@[@"使用说明",@"产品介绍"]]mutableCopy];
+    rightlist = [@[@[model.phone,[model.sex isEqualToString:@"2"]?@"女":@"男",model.age?model.age:@""],@[@"我的帖子",@"我的约战"],@[@"使用说明",@"产品介绍"]]mutableCopy];
     [self.tableview reloadData];
 }
 
@@ -47,10 +57,16 @@
     [super viewDidLoad];
     self.headview.backgroundColor = BaseColor;
     [_headbtn cornerRadius:3];
+    [_logoutbtn cornerRadius:3];
+    
+   [self performSelector:@selector(mytest:)];
     [self.tableview setTableHeaderView:self.headview];
+    
+    [self.tableview setTableFooterView:self.footerview];
     leflist = [@[@[@"电话",@"性别",@"年龄"],@[@"个人中心-我的帖子",@"个人中心-我的约战"],@[@"个人中心-使用说明",@"个人中心-产品介绍"]]mutableCopy];
     
 }
+
 
 - (IBAction)rename:(id)sender {
     
@@ -67,6 +83,18 @@
     UIActionSheet * actionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"拍照",@"从相册选择", nil];
     [actionSheet showInView:self.view];
     actionSheet = nil;
+}
+#pragma mark UIAlertViewDelegate 
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    
+    if (buttonIndex == 1) {
+        
+        [[LoginService shareInstanced]loginout];
+        LoginViewController *vc = [[LoginViewController alloc]init];
+        BaseNavigationController *nav = [[BaseNavigationController alloc]initWithRootViewController:vc];
+        AppDelegate *dele = (AppDelegate *)[UIApplication sharedApplication].delegate;
+        dele.window.rootViewController = nav;
+    }
 }
 #pragma mark - UIActionSheetDelegate Methods
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
@@ -134,7 +162,7 @@
     
     if ([title isEqualToString:@"修改昵称"]) {
         
-        
+
         [[ExamService shareInstenced]getErrorTitleWithUid:model.uid tid:name];
         [self showHud];
         [ExamService shareInstenced].getErrorTitleSuccess = ^(id obj){
@@ -154,7 +182,25 @@
         
         
     }
-    
+    else{
+        
+        [[LoginService shareInstanced]saveUserModelWithDictionary:@{@"age":name}];
+        [self hideHud];
+        [self showHudWithString:@"修改成功"];
+//        [[ExamService shareInstenced]getPracticeWithTypeId:name uid:model.uid];
+//        [self showHud];
+//        [ExamService shareInstenced].getPracticeSuccess = ^(id obj){
+//            
+//            [[LoginService shareInstanced]saveUserModelWithDictionary:@{@"age":name}];
+//            [self hideHud];
+//            [self showHudWithString:@"修改成功"];
+//        };
+//        [ExamService shareInstenced].getPracticeFailure = ^(id obj){
+//            
+//            [self hideHud];
+//            [self showHudWithString:obj];
+//        };
+    }
     
 }
 #pragma mark UITableViewDataSource

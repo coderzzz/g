@@ -657,7 +657,7 @@
 
 - (void)getPractice:(NSDictionary *)parms completionBlock:(void (^)(id objdct))success failureBlock:(void (^)(NSError *error,NSString *responseString))failure{
     
-    [self postTopic:Practice withParams:parms completionBlock:^(id obj) {
+    [self postStudy:Practice withParams:parms completionBlock:^(id obj) {
         
         BOOL isError = [self filterError:obj failureBlock:failure];
         if (isError) {
@@ -665,7 +665,7 @@
         }
         if(success)
         {
-            success(obj[@"result"]);
+            success(obj);
         }
         
     } failureBlock:failure];

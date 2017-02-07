@@ -104,8 +104,10 @@
     if (indexPath.row == 0) {
         
         cell.tf.keyboardType = UIKeyboardTypeNumberPad;
+        cell.tf.secureTextEntry = NO;
     }
     else{
+        cell.tf.secureTextEntry = YES;
         cell.tf.keyboardType =UIKeyboardTypeDefault;
     }
     cell.tf.placeholder =list[indexPath.row][1];
