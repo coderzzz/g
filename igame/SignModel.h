@@ -16,6 +16,7 @@
 @property (nonatomic, strong) NSString <Optional> * add_time;
 @property (nonatomic, strong) NSString <Optional> * number_applicants;
 @property (nonatomic, strong) NSString <Optional> * mid;
+@property (nonatomic, strong) NSString <Optional> * state;
 @property (nonatomic, strong) NSMutableArray <Optional> * signs;
 
 @end

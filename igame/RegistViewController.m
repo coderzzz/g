@@ -10,6 +10,7 @@
 #import "LoginCell.h"
 #import "LoginService.h"
 #import "UIButton+Corner.h"
+#import "TextViewController.h"
 @interface RegistViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableview;
 - (IBAction)rules:(id)sender;
@@ -50,14 +51,18 @@
     sender.selected = !sender.selected;
     if (sender.selected) {
         
-        [sender setImage:nil forState:UIControlStateNormal];
+        [sender setImage:[UIImage imageNamed:@"注册-用户协议"] forState:UIControlStateNormal];
     }else{
-        [sender setImage:[UIImage imageNamed:@"扫描-勾选"] forState:UIControlStateNormal];
+        [sender setImage:[UIImage imageNamed:@"注册-用户协议-勾选"] forState:UIControlStateNormal];
     }
     check = !sender.selected;
 
 }
 - (IBAction)rules:(id)sender {
+    
+    TextViewController *vc= [[TextViewController alloc]init];
+    [self.navigationController pushViewController:vc animated:YES];
+    
 }
 - (IBAction)regist:(id)sender {
     
@@ -114,8 +119,10 @@
     LoginCell *cell = [self.tableview cellForRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:0]];
     if (!(cell.tf.text.length>0)) return;
     [[LoginService shareInstanced]getCodeWithPhoneNumber:cell.tf.text type:@"0"];
+    [self showHud];
     [LoginService shareInstanced].getCodeSuccess = ^(id obj){
       
+        [self hideHud];
         dispatch_queue_t globalQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
         dispatch_queue_t mainQueue = dispatch_get_main_queue();
         dispatch_source_t timer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, globalQueue);
@@ -147,6 +154,8 @@
     };
     [LoginService shareInstanced].getCodeFailure = ^(id obj){
         
+        [self hideHud];
+        [self showHudWithString:[NSString stringWithFormat:@"%@",obj]];
         NSLog(@"%@",obj);
     };
     

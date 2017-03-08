@@ -22,7 +22,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"性别";
-    index = 0;
+    index = [self.mysex intValue] -1;
     list =[@[@"男",@"女"]mutableCopy];
     self.tableview.backgroundColor = Backgroundcolor;
 }

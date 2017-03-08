@@ -45,10 +45,9 @@ static CGFloat MainScreenWidth = 0;
     _containerView.layer.masksToBounds = YES;
     _datePicker =  [[UIDatePicker alloc] initWithFrame:CGRectMake(0, 10, MainScreenWidth - 20, 200)];
     [_datePicker setDate:[NSDate date] animated:YES];
-    [_datePicker setMaximumDate:[NSDate date]];
     [_datePicker setDatePickerMode:UIDatePickerModeDate];
 
-    [_datePicker setMinimumDate:[self.formatter dateFromString:@"1900-01-01日"]];
+    [_datePicker setMinimumDate:[NSDate date]];
     [_datePicker addTarget:self action:@selector(dateChange:) forControlEvents:UIControlEventValueChanged];
     [_containerView addSubview:_datePicker];
     

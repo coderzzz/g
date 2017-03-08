@@ -29,6 +29,7 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
+    NSObject *obc = [[NSObject alloc]init];
     ads = [NSMutableArray array];
     model = [[LoginService shareInstanced]getUserModel];
     [self.rangbtn cornerRadius:4];

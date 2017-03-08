@@ -8,7 +8,7 @@
 
 #import "SendGameViewController.h"
 #import "LoginCell.h"
-
+#import "ASBirthSelectSheet.h"
 @interface SendGameViewController ()<UITableViewDelegate,UITableViewDataSource,UIActionSheetDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableview;
 @property (strong, nonatomic) IBOutlet UIView *headview;
@@ -24,6 +24,7 @@
 {
     NSMutableArray *list;
     NSString  *base64Sting;
+    NSString *selecttime;
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -44,13 +45,12 @@
     LoginCell *cell = [self.tableview cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
     LoginCell *cell2 = [self.tableview cellForRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:0]];
     NSString *phone = cell.tf.text;
-    NSString *time = cell2.tf.text;
     if (!(phone.length>0)) {
         
         [self showHudWithString:@"请输入手机号码"];
         return;
     }
-    if (!(time.length>0)) {
+    if (!(selecttime.length>0)) {
         
         [self showHudWithString:@"请输入参赛时间"];
         return;
@@ -84,11 +84,12 @@
                                                      @"phone":phone,
                                                      @"battle_title":self.tf.text,
                                                      @"battle_thumb":base64Sting,
-                                                     @"add_time":time
+                                                     @"add_time":selecttime
                                                      
                                                      }];
     
 }
+
 
 - (IBAction)upload:(UIButton *)sender {
     
@@ -138,9 +139,12 @@
     if (indexPath.row == 0) {
         
         cell.tf.keyboardType = UIKeyboardTypeNumberPad;
+        cell.tf.userInteractionEnabled = YES;
     }
     else{
         cell.tf.keyboardType =UIKeyboardTypeDefault;
+        cell.tf.userInteractionEnabled = NO;
+        cell.tf.text = selecttime;
     }
     cell.imagv.image = [UIImage imageNamed:list[indexPath.row][0]];
     cell.tf.placeholder =list[indexPath.row][1];
@@ -152,6 +156,22 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return 50;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    if (indexPath.row == 1) {
+        
+        ASBirthSelectSheet *datesheet = [[ASBirthSelectSheet alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight)];
+        //        datesheet.selectDate = @"2016-07-05";
+        datesheet.GetSelectDate = ^(NSString *dateStr) {
+            
+            selecttime = dateStr;
+            [self.tableview reloadData];
+            NSLog(@"%@",dateStr);
+        };
+        [self.navigationController.view addSubview:datesheet];
+    }
 }
 
 @end

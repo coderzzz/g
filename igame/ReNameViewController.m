@@ -17,6 +17,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = Backgroundcolor;
+    if ([self.title isEqualToString:@"修改年龄"]){
+        self.tf.keyboardType = UIKeyboardTypeNumberPad;
+    }
     self.tf.placeholder = self.text;
     UIBarButtonItem *item = [[UIBarButtonItem alloc]initWithTitle:@"确定" style:UIBarButtonItemStylePlain target:self action:@selector(done)];
     self.navigationItem.rightBarButtonItem = item;

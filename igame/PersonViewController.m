@@ -59,9 +59,8 @@
     [_headbtn cornerRadius:3];
     [_logoutbtn cornerRadius:3];
     
-   [self performSelector:@selector(mytest:)];
     [self.tableview setTableHeaderView:self.headview];
-    
+    NSLog(@"");
     [self.tableview setTableFooterView:self.footerview];
     leflist = [@[@[@"电话",@"性别",@"年龄"],@[@"个人中心-我的帖子",@"个人中心-我的约战"],@[@"个人中心-使用说明",@"个人中心-产品介绍"]]mutableCopy];
     
@@ -261,6 +260,7 @@
            
             SexViewController *vc = [[SexViewController alloc]init];
             vc.delegate = self;
+            vc.mysex = model.sex;
             vc.hidesBottomBarWhenPushed = YES;
             [self.navigationController pushViewController:vc animated:YES];
             

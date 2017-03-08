@@ -16,7 +16,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    self.title = @"用户注册协议";
 }
 
 - (void)didReceiveMemoryWarning {

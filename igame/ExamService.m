@@ -658,6 +658,7 @@
             NSMutableArray *dataArray = [NSMutableArray array];
             
             SignModel *bat = [[SignModel alloc]initWithDictionary:dic[@"battle"] error:nil];
+            bat.state = [NSString stringWithFormat:@"%@",dic[@"is_sign"]];
             for (NSDictionary *temp in ary) {
                 
                 UserModel *model = [[UserModel alloc]initWithDictionary:temp error:nil];
@@ -667,6 +668,7 @@
                     [dataArray addObject:model];
                 }
             }
+            bat.signs = [NSMutableArray array];
             [bat.signs addObjectsFromArray:dataArray];
             
             

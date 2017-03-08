@@ -28,6 +28,9 @@
     self.contentview.backgroundColor = BaseColor;
     [self.usebtn setTitleColor:BaseColor forState:UIControlStateNormal];;
     [self.datebtn setTitleColor:BaseColor forState:UIControlStateNormal];
+    NSString *date = [[NSDate date]formatDateString:nil];
+    [self.datebtn setTitle:date forState:UIControlStateNormal];
+    
     
     if (self.view.frame.size.height >450) {
         

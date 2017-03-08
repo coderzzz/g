@@ -12,4 +12,7 @@
 #import "BaseViewController.h"
 @interface SexViewController : BaseViewController
 @property (weak, nonatomic) id<SexViewControllerDelegate> delegate;
+
+
+@property (copy, nonatomic) NSString *mysex;
 @end

@@ -34,7 +34,7 @@
         [self hideHud];
         data = obj;
         [self.tableview reloadData];
-
+        
         
     };
     [ExamService shareInstenced].getAllLikeFailure = ^(id obj){
@@ -84,7 +84,14 @@
         cell.titlelab.text = data.battle_title;
         cell.contenlab.text = data.battle_title;
         [cell.imageview sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",Img_URL_Prefix,data.battle_thumb]] placeholderImage:Aavatar];
-        [cell.signbtn addTarget:self action:@selector(sign) forControlEvents:UIControlEventTouchUpInside];
+        if ([data.state boolValue]) {
+            
+            [cell.signbtn setTitle:@"已报名" forState:UIControlStateNormal];
+        }
+        else{
+             [cell.signbtn setTitle:@"报名" forState:UIControlStateNormal];
+            [cell.signbtn addTarget:self action:@selector(sign) forControlEvents:UIControlEventTouchUpInside];
+        }
         return cell;
     }
     else{

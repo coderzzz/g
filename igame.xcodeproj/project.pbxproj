@@ -55,6 +55,11 @@
 		E246CDAA1E012B3E003193E3 /* OpenViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E246CDA81E012B3E003193E3 /* OpenViewController.xib */; };
 		E246CDAE1E01490F003193E3 /* ConnectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E246CDAC1E01490F003193E3 /* ConnectViewController.m */; };
 		E246CDAF1E01490F003193E3 /* ConnectViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E246CDAD1E01490F003193E3 /* ConnectViewController.xib */; };
+		E24ABB721E514C4700184B7B /* TextViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E24ABB701E514C4700184B7B /* TextViewController.m */; };
+		E24ABB731E514C4700184B7B /* TextViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E24ABB711E514C4700184B7B /* TextViewController.xib */; };
+		E24ABB761E51849800184B7B /* ASBirthSelectSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = E24ABB751E51849800184B7B /* ASBirthSelectSheet.m */; };
+		E24ABB7A1E5187A600184B7B /* DateTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E24ABB781E5187A600184B7B /* DateTableViewCell.m */; };
+		E24ABB7B1E5187A600184B7B /* DateTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E24ABB791E5187A600184B7B /* DateTableViewCell.xib */; };
 		E2D40C7D1E1F2FDD0030F069 /* AFHttp.m in Sources */ = {isa = PBXBuildFile; fileRef = E2D40C741E1F2FDD0030F069 /* AFHttp.m */; };
 		E2D40C7E1E1F2FDD0030F069 /* HttpService.m in Sources */ = {isa = PBXBuildFile; fileRef = E2D40C761E1F2FDD0030F069 /* HttpService.m */; };
 		E2D40C7F1E1F2FDD0030F069 /* PhotoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E2D40C781E1F2FDD0030F069 /* PhotoManager.m */; };
@@ -200,6 +205,14 @@
 		E246CDAB1E01490F003193E3 /* ConnectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConnectViewController.h; sourceTree = "<group>"; };
 		E246CDAC1E01490F003193E3 /* ConnectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConnectViewController.m; sourceTree = "<group>"; };
 		E246CDAD1E01490F003193E3 /* ConnectViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ConnectViewController.xib; sourceTree = "<group>"; };
+		E24ABB6F1E514C4700184B7B /* TextViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextViewController.h; sourceTree = "<group>"; };
+		E24ABB701E514C4700184B7B /* TextViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextViewController.m; sourceTree = "<group>"; };
+		E24ABB711E514C4700184B7B /* TextViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TextViewController.xib; sourceTree = "<group>"; };
+		E24ABB741E51849800184B7B /* ASBirthSelectSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASBirthSelectSheet.h; sourceTree = "<group>"; };
+		E24ABB751E51849800184B7B /* ASBirthSelectSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASBirthSelectSheet.m; sourceTree = "<group>"; };
+		E24ABB771E5187A600184B7B /* DateTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DateTableViewCell.h; sourceTree = "<group>"; };
+		E24ABB781E5187A600184B7B /* DateTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DateTableViewCell.m; sourceTree = "<group>"; };
+		E24ABB791E5187A600184B7B /* DateTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DateTableViewCell.xib; sourceTree = "<group>"; };
 		E2D40C731E1F2FDD0030F069 /* AFHttp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHttp.h; sourceTree = "<group>"; };
 		E2D40C741E1F2FDD0030F069 /* AFHttp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHttp.m; sourceTree = "<group>"; };
 		E2D40C751E1F2FDD0030F069 /* HttpService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpService.h; sourceTree = "<group>"; };
@@ -534,6 +547,11 @@
 				E2E410411DFABEF90056CF3C /* SendGameViewController.h */,
 				E2E410421DFABEF90056CF3C /* SendGameViewController.m */,
 				E2E410431DFABEF90056CF3C /* SendGameViewController.xib */,
+				E24ABB771E5187A600184B7B /* DateTableViewCell.h */,
+				E24ABB781E5187A600184B7B /* DateTableViewCell.m */,
+				E24ABB791E5187A600184B7B /* DateTableViewCell.xib */,
+				E24ABB741E51849800184B7B /* ASBirthSelectSheet.h */,
+				E24ABB751E51849800184B7B /* ASBirthSelectSheet.m */,
 				E2315D591DFE4AF600907978 /* SignUpViewController.h */,
 				E2315D5A1DFE4AF600907978 /* SignUpViewController.m */,
 				E2315D5B1DFE4AF600907978 /* SignUpViewController.xib */,
@@ -657,6 +675,9 @@
 				E2E410271DF94C980056CF3C /* RegistViewController.h */,
 				E2E410281DF94C980056CF3C /* RegistViewController.m */,
 				E2E410291DF94C980056CF3C /* RegistViewController.xib */,
+				E24ABB6F1E514C4700184B7B /* TextViewController.h */,
+				E24ABB701E514C4700184B7B /* TextViewController.m */,
+				E24ABB711E514C4700184B7B /* TextViewController.xib */,
 				E2E4102C1DF953F70056CF3C /* PasswordViewController.h */,
 				E2E4102D1DF953F70056CF3C /* PasswordViewController.m */,
 				E2E4102E1DF953F70056CF3C /* PasswordViewController.xib */,
@@ -749,6 +770,7 @@
 				E24323791E07777F00E0782B /* SexViewController.xib in Resources */,
 				E225F1431E02728200A525E9 /* RecordViewController.xib in Resources */,
 				E2EFD8AE1E00E93600D09A11 /* InputViewController.xib in Resources */,
+				E24ABB7B1E5187A600184B7B /* DateTableViewCell.xib in Resources */,
 				E24323741E07747100E0782B /* ReNameViewController.xib in Resources */,
 				E2E410361DFA844C0056CF3C /* HomeCell.xib in Resources */,
 				E2E40FF11DF8F71F0056CF3C /* Assets.xcassets in Resources */,
@@ -767,6 +789,7 @@
 				E24323831E07813600E0782B /* MyGameViewController.xib in Resources */,
 				E2EFD8931DFFE33C00D09A11 /* ChildrenViewController.xib in Resources */,
 				E2E4102B1DF94C980056CF3C /* RegistViewController.xib in Resources */,
+				E24ABB731E514C4700184B7B /* TextViewController.xib in Resources */,
 				E246CDAA1E012B3E003193E3 /* OpenViewController.xib in Resources */,
 				E225F14D1E027D8400A525E9 /* UseTimeCell.xib in Resources */,
 				E2E410301DF953F70056CF3C /* PasswordViewController.xib in Resources */,
@@ -833,6 +856,7 @@
 				E2D40E611E275A330030F069 /* RTLabel.m in Sources */,
 				E2D40E5A1E2377210030F069 /* NewsModel.m in Sources */,
 				E2D40DE61E1F33E60030F069 /* UIImage+ImageEffects.m in Sources */,
+				E24ABB721E514C4700184B7B /* TextViewController.m in Sources */,
 				E2E410261DF94A950056CF3C /* UIButton+Corner.m in Sources */,
 				E2D40DDD1E1F33E60030F069 /* CurrentTime.m in Sources */,
 				E2D40DE11E1F33E60030F069 /* NSDate+Utils.m in Sources */,
@@ -860,6 +884,7 @@
 				E2E410441DFABEF90056CF3C /* SendGameViewController.m in Sources */,
 				E2D40E6A1E28D3B30030F069 /* MybattModel.m in Sources */,
 				E2D40E641E277AD70030F069 /* AdvertisementView.m in Sources */,
+				E24ABB7A1E5187A600184B7B /* DateTableViewCell.m in Sources */,
 				E2315D6B1DFE892000907978 /* BlogListViewController.m in Sources */,
 				E246CDAE1E01490F003193E3 /* ConnectViewController.m in Sources */,
 				E2D40EC71E29F4910030F069 /* ZZBluetoothManger.m in Sources */,
@@ -870,6 +895,7 @@
 				E2E410221DF9430B0056CF3C /* LoginCell.m in Sources */,
 				E2D40DE01E1F33E60030F069 /* IO.m in Sources */,
 				E2EFD8921DFFE33C00D09A11 /* ChildrenViewController.m in Sources */,
+				E24ABB761E51849800184B7B /* ASBirthSelectSheet.m in Sources */,
 				E2D40F081E2CB6DC0030F069 /* BatteryViewController.m in Sources */,
 				E24323871E07AD1100E0782B /* IntroduceViewController.m in Sources */,
 				E2315D5C1DFE4AF600907978 /* SignUpViewController.m in Sources */,

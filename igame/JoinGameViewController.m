@@ -34,6 +34,11 @@
     [self setUptables];
 }
 
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self.tableview.header beginRefreshing];
+}
+
 -(void)setUptables
 {
     //添加下拉刷新
@@ -46,7 +51,6 @@
         
         [[ExamService shareInstenced]getMorebattleWithUid:model.uid];
     }];
-    [self.tableview.header beginRefreshing];
 
 }
 
