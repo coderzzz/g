@@ -183,22 +183,22 @@
     }
     else{
         
-        [[LoginService shareInstanced]saveUserModelWithDictionary:@{@"age":name}];
+        
         [self hideHud];
-        [self showHudWithString:@"修改成功"];
-//        [[ExamService shareInstenced]getPracticeWithTypeId:name uid:model.uid];
-//        [self showHud];
-//        [ExamService shareInstenced].getPracticeSuccess = ^(id obj){
-//            
-//            [[LoginService shareInstanced]saveUserModelWithDictionary:@{@"age":name}];
-//            [self hideHud];
-//            [self showHudWithString:@"修改成功"];
-//        };
-//        [ExamService shareInstenced].getPracticeFailure = ^(id obj){
-//            
-//            [self hideHud];
-//            [self showHudWithString:obj];
-//        };
+        [[ExamService shareInstenced]getPracticeWithTypeId:name uid:model.uid];
+        [self showHud];
+        [ExamService shareInstenced].getPracticeSuccess = ^(id obj){
+            
+            [[LoginService shareInstanced]saveUserModelWithDictionary:@{@"age":name}];
+            [self hideHud];
+            [self showHudWithString:@"修改成功"];
+             [self setupui];
+        };
+        [ExamService shareInstenced].getPracticeFailure = ^(id obj){
+            
+            [self hideHud];
+            [self showHudWithString:obj];
+        };
     }
     
 }
