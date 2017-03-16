@@ -10,6 +10,7 @@
 #import "TabBarViewController.h"
 #import "BaseNavigationController.h"
 #import "LoginViewController.h"
+#import "TypeViewController.h"
 @interface AppDelegate ()
 
 @end
@@ -30,8 +31,12 @@
     
     if ([[LoginService shareInstanced]isLogined]) {
         
-        TabBarViewController *vc = [[TabBarViewController alloc]init];
+        TypeViewController *vc = [[TypeViewController alloc]init];
         self.window.rootViewController = vc;
+        
+        
+//        TabBarViewController *vc = [[TabBarViewController alloc]init];
+//        self.window.rootViewController = vc;
     }
     else{
         

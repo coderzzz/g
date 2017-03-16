@@ -7,6 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PersonViewController">
             <connections>
+                <outlet property="closebtn" destination="4U3-cI-BgR" id="xBD-Jy-62D"/>
                 <outlet property="footerview" destination="iGj-PF-X1s" id="cjf-W3-03N"/>
                 <outlet property="headbtn" destination="gvy-Pz-ANt" id="NK1-WR-k7L"/>
                 <outlet property="headview" destination="1kF-yE-T8O" id="Xae-cg-GIW"/>
@@ -84,14 +85,36 @@
             <point key="canvasLocation" x="129" y="2"/>
         </view>
         <view contentMode="scaleToFill" id="iGj-PF-X1s">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="95"/>
+            <rect key="frame" x="0.0" y="0.0" width="320" height="84"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ViM-FF-kmy">
-                    <rect key="frame" x="27" y="28" width="266" height="40"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4U3-cI-BgR">
+                    <rect key="frame" x="8" y="24" width="150" height="40"/>
                     <color key="backgroundColor" red="0.08235294118" green="0.61176470589999998" blue="0.54117647059999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="40" id="ujd-3y-A1a"/>
+                        <constraint firstAttribute="height" constant="40" id="BRK-P3-GAn"/>
+                        <constraint firstAttribute="width" constant="150" id="H8K-I2-dur"/>
+                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="vSQ-Wb-0PY"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <state key="normal" title="关闭手柄">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="vSQ-Wb-0PY"/>
+                        </mask>
+                    </variation>
+                    <connections>
+                        <action selector="close:" destination="-1" eventType="touchUpInside" id="zJc-Pb-jKh"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ViM-FF-kmy">
+                    <rect key="frame" x="162" y="24" width="150" height="40"/>
+                    <color key="backgroundColor" red="0.08235294118" green="0.61176470589999998" blue="0.54117647059999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="Cz7-ZF-r72"/>
+                        <constraint firstAttribute="width" constant="150" id="hJn-Z0-kOj"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <state key="normal" title="退出登录">
@@ -104,13 +127,13 @@
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="ViM-FF-kmy" firstAttribute="centerY" secondItem="iGj-PF-X1s" secondAttribute="centerY" id="Bbd-Zl-spz"/>
-                <constraint firstAttribute="trailing" secondItem="ViM-FF-kmy" secondAttribute="trailing" constant="27" id="Kpy-K4-oQR"/>
-                <constraint firstItem="ViM-FF-kmy" firstAttribute="leading" secondItem="iGj-PF-X1s" secondAttribute="leading" constant="27" id="aTX-do-u4b"/>
-                <constraint firstItem="ViM-FF-kmy" firstAttribute="centerX" secondItem="iGj-PF-X1s" secondAttribute="centerX" id="gL4-zv-pH8"/>
+                <constraint firstItem="ViM-FF-kmy" firstAttribute="top" secondItem="iGj-PF-X1s" secondAttribute="top" constant="24" id="98L-WP-I0T"/>
+                <constraint firstItem="4U3-cI-BgR" firstAttribute="leading" secondItem="iGj-PF-X1s" secondAttribute="leading" constant="8" id="Arq-Rw-9BN"/>
+                <constraint firstAttribute="trailing" secondItem="ViM-FF-kmy" secondAttribute="trailing" constant="8" id="LfH-yj-v37"/>
+                <constraint firstItem="4U3-cI-BgR" firstAttribute="top" secondItem="iGj-PF-X1s" secondAttribute="top" constant="24" id="UYB-Pc-bIJ"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="273" y="278.5"/>
+            <point key="canvasLocation" x="67" y="214"/>
         </view>
     </objects>
     <resources>

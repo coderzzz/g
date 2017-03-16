@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		BC691C148A13B149E36A9421 /* libPods-igame.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D0B95056F9FFD80AB795422C /* libPods-igame.a */; };
+		E217D66D1E794E9900FBD477 /* TypeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E217D66B1E794E9900FBD477 /* TypeViewController.m */; };
+		E217D66E1E794E9900FBD477 /* TypeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E217D66C1E794E9900FBD477 /* TypeViewController.xib */; };
 		E225F1421E02728200A525E9 /* RecordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E225F1401E02728200A525E9 /* RecordViewController.m */; };
 		E225F1431E02728200A525E9 /* RecordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E225F1411E02728200A525E9 /* RecordViewController.xib */; };
 		E225F1471E0274B200A525E9 /* RecordCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E225F1451E0274B200A525E9 /* RecordCell.m */; };
@@ -134,6 +136,9 @@
 		476DF04FFAB9906FB08E416A /* Pods-igame.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-igame.debug.xcconfig"; path = "Pods/Target Support Files/Pods-igame/Pods-igame.debug.xcconfig"; sourceTree = "<group>"; };
 		4D63B664F0136E1E0AE9F89C /* Pods-igame.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-igame.release.xcconfig"; path = "Pods/Target Support Files/Pods-igame/Pods-igame.release.xcconfig"; sourceTree = "<group>"; };
 		D0B95056F9FFD80AB795422C /* libPods-igame.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-igame.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E217D66A1E794E9900FBD477 /* TypeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TypeViewController.h; sourceTree = "<group>"; };
+		E217D66B1E794E9900FBD477 /* TypeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TypeViewController.m; sourceTree = "<group>"; };
+		E217D66C1E794E9900FBD477 /* TypeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TypeViewController.xib; sourceTree = "<group>"; };
 		E225F13F1E02728200A525E9 /* RecordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecordViewController.h; sourceTree = "<group>"; };
 		E225F1401E02728200A525E9 /* RecordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecordViewController.m; sourceTree = "<group>"; };
 		E225F1411E02728200A525E9 /* RecordViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RecordViewController.xib; sourceTree = "<group>"; };
@@ -690,6 +695,9 @@
 				E2D40E441E1F39240030F069 /* LoginService.m */,
 				E2D40E461E1F39310030F069 /* UserModel.h */,
 				E2D40E471E1F39310030F069 /* UserModel.m */,
+				E217D66A1E794E9900FBD477 /* TypeViewController.h */,
+				E217D66B1E794E9900FBD477 /* TypeViewController.m */,
+				E217D66C1E794E9900FBD477 /* TypeViewController.xib */,
 			);
 			name = LoginTab;
 			sourceTree = "<group>";
@@ -768,6 +776,7 @@
 				E2315D851DFEAA7200907978 /* SendBlogViewController.xib in Resources */,
 				E246CDA51E012526003193E3 /* TimeCell.xib in Resources */,
 				E24323791E07777F00E0782B /* SexViewController.xib in Resources */,
+				E217D66E1E794E9900FBD477 /* TypeViewController.xib in Resources */,
 				E225F1431E02728200A525E9 /* RecordViewController.xib in Resources */,
 				E2EFD8AE1E00E93600D09A11 /* InputViewController.xib in Resources */,
 				E24ABB7B1E5187A600184B7B /* DateTableViewCell.xib in Resources */,
@@ -869,6 +878,7 @@
 				E2315D7A1DFE9DA900907978 /* DetailCell.m in Sources */,
 				E2D40DE51E1F33E60030F069 /* UIColor+Utils.m in Sources */,
 				E2315D661DFE848000907978 /* SingCell.m in Sources */,
+				E217D66D1E794E9900FBD477 /* TypeViewController.m in Sources */,
 				E246CD9F1E011E6E003193E3 /* TimeViewController.m in Sources */,
 				E2315D8C1DFF93FA00907978 /* MySaveFirstTableViewCell.m in Sources */,
 				E2D40E451E1F39240030F069 /* LoginService.m in Sources */,

@@ -48,7 +48,7 @@
     
     
 }
--(NSData*) hexToBytesWith:(NSString *)str{
+-(NSData *)hexToBytesWith:(NSString *)str{
     NSMutableData* data = [NSMutableData data];
     int idx;
     for (idx = 0; idx+2 <= str.length; idx+=2) {

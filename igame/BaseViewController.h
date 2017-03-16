@@ -15,5 +15,5 @@
 - (void)showHud;
 
 - (void)hideHud;
--(NSData*) hexToBytesWith:(NSString *)str;
+-(NSData *)hexToBytesWith:(NSString *)str;
 @end

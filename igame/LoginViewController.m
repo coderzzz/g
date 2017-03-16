@@ -13,6 +13,7 @@
 #import "UIButton+Corner.h"
 #import "TabBarViewController.h"
 #import "AppDelegate.h"
+#import "TypeViewController.h"
 @interface LoginViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableview;
 @property (strong, nonatomic) IBOutlet UIView *footview;
@@ -74,9 +75,16 @@
     [LoginService shareInstanced].loginSuccess = ^(id obj){
         
         [self hideHud];
+        
+        
+        
         AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate ;
-        TabBarViewController *vc = [[TabBarViewController alloc]init];
+        TypeViewController *vc = [[TypeViewController alloc]init];
         delegate.window.rootViewController = vc;
+        
+        
+//        TabBarViewController *vc = [[TabBarViewController alloc]init];
+//        delegate.window.rootViewController = vc;
         
     };
     [LoginService shareInstanced].loginFailure = ^(id obj){

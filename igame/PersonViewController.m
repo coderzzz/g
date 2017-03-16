@@ -23,6 +23,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *namebtn;
 @property (strong, nonatomic) IBOutlet UIView *footerview;
 @property (weak, nonatomic) IBOutlet UIButton *logoutbtn;
+@property (weak, nonatomic) IBOutlet UIButton *closebtn;
 
 @end
 
@@ -43,6 +44,31 @@
     UIAlertView *alert =[[UIAlertView alloc]initWithTitle:@"提示" message:@"是否退出登录？" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
     [alert show];
 }
+- (IBAction)close:(id)sender {
+    
+    DataModel *data = [ZZBluetoothManger shareInstance].currentModel;
+    if (!data) {
+        
+        [self showHudWithString:@"请连接并选择需要通讯的蓝牙手柄..."];
+        return;
+    }
+    [[ZZBluetoothManger shareInstance]writePeripheral:data.cbPeripheral characteristic:data.cbCharacteristc2 value:[self hexToBytesWith:@"0501"]];
+    [[ZZBluetoothManger shareInstance]writePeripheral:data.cbPeripheral characteristic:data.cbCharacteristc1 value:[self hexToBytesWith:@"01"]];
+    [self showHudWithString:@"关闭成功"];
+}
+-(NSData *)hexToBytesWith:(NSString *)str{
+    NSMutableData* data = [NSMutableData data];
+    int idx;
+    for (idx = 0; idx+2 <= str.length; idx+=2) {
+        NSRange range = NSMakeRange(idx, 2);
+        NSString* hexStr = [str substringWithRange:range];
+        NSScanner* scanner = [NSScanner scannerWithString:hexStr];
+        unsigned intValue;
+        [scanner scanHexInt:&intValue];
+        [data appendBytes:&intValue length:1];
+    }
+    return data;
+}
 
 - (void)setupui{
     
@@ -58,7 +84,7 @@
     self.headview.backgroundColor = BaseColor;
     [_headbtn cornerRadius:3];
     [_logoutbtn cornerRadius:3];
-    
+    [_closebtn cornerRadius:3];
     [self.tableview setTableHeaderView:self.headview];
     NSLog(@"");
     [self.tableview setTableFooterView:self.footerview];
