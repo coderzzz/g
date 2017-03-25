@@ -46,11 +46,24 @@
         self.titlelab.text = @"蓝牙连接";
         self.tiplab.text = @"我的设备";
         __weak typeof(ConnectViewController) *weakSelf = self;
+        
+        list = [ZZBluetoothManger shareInstance].connectedList;
         [[ZZBluetoothManger shareInstance] startScanWithBlock:^(NSMutableArray *ary) {
             
-            list = [ary copy];
-            [weakSelf.tableview reloadData];
-            NSLog(@" connect %@",ary);
+            for ( CBPeripheral *cbPeripheral in ary) {
+                
+                if (cbPeripheral.state != CBPeripheralStateConnected ) {
+                    
+                    [[ZZBluetoothManger shareInstance]startconnectWithPeripheral:cbPeripheral block:^(BOOL isSuccess, NSError *error, DataModel *model) {
+                        [list addObject:model.cbPeripheral];
+                        [self.tableview reloadData];
+                        
+                    }];
+                }
+            }
+            
+//            [weakSelf.tableview reloadData];
+//            NSLog(@" connect %@",ary);
         }];
         
     }

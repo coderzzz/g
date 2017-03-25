@@ -21,7 +21,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
-
+    
     [ZZBluetoothManger shareInstance].connectPeripheralResultBlock = ^(BOOL isSuccess,NSError *error,DataModel *model){
         
         NSLog(@"%@--- %@",model.cbCharacteristc1.UUID,model.cbCharacteristc2.UUID);

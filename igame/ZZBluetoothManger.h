@@ -45,6 +45,8 @@ typedef void (^RetrieveConnectResultBlock)(BOOL isSuccess,DataModel *model);
 
 @property (strong,nonatomic) NSMutableArray *lightList;
 
+@property (strong,nonatomic) NSMutableArray *connectedList;
+
 @property (nonatomic, copy) ConnectPeripheralResultBlock connectPeripheralResultBlock;
 
 @property (nonatomic, copy) RetrieveConnectResultBlock retrieveConnectResultBlock;

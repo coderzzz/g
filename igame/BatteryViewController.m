@@ -37,7 +37,7 @@
             NSString *btv = [NSString stringWithFormat:@"%lu",strtoul([datalist[1] UTF8String],0,16)];
             NSString *speed = [NSString stringWithFormat:@"%@%@",datalist[3],datalist[2]];
             NSString *str = [NSString stringWithFormat:@"手速：%lu次每分钟",strtoul([speed UTF8String],0,16)];
-            self.batteryvaluelab.text = [NSString stringWithFormat:@"当前电量：%@",btv];
+            self.batteryvaluelab.text = [NSString stringWithFormat:@"当前电量：%@%%",btv];
             self.batterystatuelab.text = [statue boolValue]?@"是否充电中：是":@"是否充电中：否";
             self.handspeedlab.text = str;
         };

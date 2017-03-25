@@ -26,9 +26,16 @@
 }
 - (IBAction)aciton:(UIButton *)sender {
     
-    AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate ;
-    TabBarViewController *vc = [[TabBarViewController alloc]init];
-    delegate.window.rootViewController = vc;
+    if (sender.tag == 2) {
+        
+        AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate ;
+        TabBarViewController *vc = [[TabBarViewController alloc]init];
+        delegate.window.rootViewController = vc;
+
+    }else{
+        
+        [self showHudWithString:@"建设中..."];
+    }
 }
 
 /*
