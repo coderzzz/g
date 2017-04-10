@@ -200,19 +200,25 @@
     NSLog(@"didDiscoverPeripheral %@",peripheral.name);
     
     BOOL isexit = NO;
-    for (CBPeripheral *per in _discoverPeripherals) {
+    
+    if ([peripheral.name hasPrefix:@"N"]) {
         
-        if ([peripheral.identifier.UUIDString isEqualToString:per.identifier.UUIDString]) {
+        for (CBPeripheral *per in _discoverPeripherals) {
             
-            isexit = YES;
+            if ([peripheral.identifier.UUIDString isEqualToString:per.identifier.UUIDString]) {
+                
+                isexit = YES;
+            }
         }
-    }
-    if (!isexit) {
+        if (!isexit) {
+            
+            [_discoverPeripherals addObject:peripheral];
+        }
         
-       [_discoverPeripherals addObject:peripheral];
+        self.scanResultBlock(_discoverPeripherals);
+        
     }
-
-    self.scanResultBlock(_discoverPeripherals);
+    
 
 }
 #pragma mark Peripheral

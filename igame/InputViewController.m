@@ -44,20 +44,43 @@
     
     if (self.tf.text.length == 4) {
         
-        [ExamService shareInstenced].cancelExamSuccess = ^(id obj){
-          
-            [self hideHud];
-            [self.navigationController popViewControllerAnimated:YES];
+       NSString *oldPw = [[NSUserDefaults standardUserDefaults]objectForKey:@"PW"];
+        if (oldPw.length>0) {
             
-        };
-        [ExamService shareInstenced].cancelExamFailure = ^(id obj){
-          
-            [self hideHud];
-            [self showHudWithString:obj];
+            [self showHudWithString:@"请输入新密码"];
+            self.tf.text = nil;
+            for (int a =0; a<list.count; a++) {
+                
+                UILabel *lab = list[a];
+                lab.text = @"";
+                
+                
+            }
+             [[NSUserDefaults standardUserDefaults]setObject:@"" forKey:@"PW"];
+        }
+        else
+        {
+            [ExamService shareInstenced].cancelExamSuccess = ^(id obj){
+                
+                
+                [[NSUserDefaults standardUserDefaults]setObject:self.tf.text forKey:@"PW"];
+                [[NSUserDefaults standardUserDefaults]synchronize];
+                
+                [self hideHud];
+                [self.navigationController popViewControllerAnimated:YES];
+                
+            };
+            [ExamService shareInstenced].cancelExamFailure = ^(id obj){
+                
+                [self hideHud];
+                [self showHudWithString:obj];
+                
+            };
+            [self showHud];
+            [[ExamService shareInstenced]cancleExamWithUid:model.uid examId:self.tf.text];
             
-        };
-        [self showHud];
-        [[ExamService shareInstenced]cancleExamWithUid:model.uid examId:self.tf.text];
+        }
+        
     }
 }
 

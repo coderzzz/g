@@ -142,15 +142,15 @@
     
     if ([self.type isEqualToString:@"2"]) {
         
-        CBPeripheral *cbPeripheral = list[indexPath.row];
-        if (cbPeripheral.state != CBPeripheralStateConnected ) {
-            
-            [[ZZBluetoothManger shareInstance]startconnectWithPeripheral:cbPeripheral block:^(BOOL isSuccess, NSError *error, DataModel *model) {
-                
-                [self.tableview reloadData];
-                
-            }];
-        }
+//        CBPeripheral *cbPeripheral = list[indexPath.row];
+//        if (cbPeripheral.state != CBPeripheralStateConnected ) {
+//            
+//            [[ZZBluetoothManger shareInstance]startconnectWithPeripheral:cbPeripheral block:^(BOOL isSuccess, NSError *error, DataModel *model) {
+//                
+//                [self.tableview reloadData];
+//                
+//            }];
+//        }
     }
     else if ([self.type isEqualToString:@"3"]){
        
