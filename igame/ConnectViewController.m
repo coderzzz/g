@@ -47,24 +47,14 @@
         self.tiplab.text = @"我的设备";
         __weak typeof(ConnectViewController) *weakSelf = self;
         
-        list = [ZZBluetoothManger shareInstance].connectedList;
+        list = [ZZBluetoothManger shareInstance].lightList;
         [[ZZBluetoothManger shareInstance] startScanWithBlock:^(NSMutableArray *ary) {
             
-            for ( CBPeripheral *cbPeripheral in ary) {
-                
-                if (cbPeripheral.state != CBPeripheralStateConnected ) {
-                    
-                    [[ZZBluetoothManger shareInstance]startconnectWithPeripheral:cbPeripheral block:^(BOOL isSuccess, NSError *error, DataModel *model) {
-                        [list addObject:model.cbPeripheral];
-                        [self.tableview reloadData];
-                        
-                    }];
-                }
-            }
-            
-//            [weakSelf.tableview reloadData];
-//            NSLog(@" connect %@",ary);
+            list = [ary copy];
+            [self.tableview reloadData];
         }];
+        [self.tableview reloadData];
+
         
     }
     else{
@@ -96,10 +86,11 @@
     if ([self.type isEqualToString:@"3"]) {
         
         DataModel *model = list[indexPath.row];
+       
         cell.textLabel.text = model.cbPeripheral.name;
         UIImageView *imgv = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 15, 10)];
         imgv.image = [UIImage imageNamed:@"扫描-勾选"];
-        if (indexPath.row == index) {
+        if ( [[ZZBluetoothManger shareInstance].currentModel.uuid isEqualToString:model.uuid]) {
             cell.accessoryView = imgv;
         }
         else{
@@ -108,21 +99,9 @@
     }
     else{
      
-        CBPeripheral *cbPeripheral = list[indexPath.row];
-        cell.textLabel.text = cbPeripheral.name?cbPeripheral.name:@"未知设备";
-        if ([self.type isEqualToString:@"2"]) {
-            
-            NSString *state;
-            if (cbPeripheral.state == CBPeripheralStateConnected) {
-                
-                state = @"已连接";
-            }
-            else{
-                
-                state = @"未连接";
-            }
-            cell.detailTextLabel.text = state;
-        }
+        DataModel *model = list[indexPath.row];
+        cell.textLabel.text = model.cbPeripheral.name;
+        cell.detailTextLabel.text = @"已连接";
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;

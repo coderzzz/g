@@ -10,7 +10,9 @@
 
 @interface RankingModel : JSONModel
 
+@property (nonatomic, strong) NSString <Optional> * month_number;
 @property (nonatomic, strong) NSString <Optional> * number_wins;
+@property (nonatomic, strong) NSString <Optional> * week_number;
 @property (nonatomic, strong) NSString <Optional> * nickname;
 @property (nonatomic, strong) NSString <Optional> * avatar;
 @end

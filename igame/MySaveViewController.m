@@ -197,17 +197,22 @@
     if (tableView == _firstTableview) {
         
         data = _weekList[indexPath.row];
+        cell.dateLab.text = [NSString stringWithFormat:@"胜利场数：%@",data.week_number];
     }
     else if (tableView == _secondTableview){
         
         data = _monthList[indexPath.row];
+        cell.dateLab.text = [NSString stringWithFormat:@"胜利场数：%@",data.month_number];
     }else{
         
         data = _all[indexPath.row];
+        cell.dateLab.text = [NSString stringWithFormat:@"胜利场数：%@",data.number_wins];
+
     }
     if (data) {
         
-        [cell.newsImg sd_setImageWithURL:[NSURL URLWithString:data.avatar] placeholderImage:Aavatar];
+        cell.typeLab.text = data.nickname;
+        [cell.newsImg sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",Img_URL_Prefix,data.avatar]] placeholderImage:Aavatar];
         
     }
     return cell;

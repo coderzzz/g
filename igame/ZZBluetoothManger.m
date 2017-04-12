@@ -67,6 +67,8 @@
         macDic = [NSMutableDictionary dictionary];
         
         dataList = [NSMutableArray array];
+        
+        _manager = [[CBCentralManager alloc]initWithDelegate:self queue:dispatch_get_main_queue()];
     }
     
     return self;
@@ -77,8 +79,26 @@
  *  开始扫描
  */
 -(void)startScanWithBlock:(ScanResultBlock)block{
+
     
-    _manager = [[CBCentralManager alloc]initWithDelegate:self queue:dispatch_get_main_queue()];
+    NSArray *arr = [self.manager retrieveConnectedPeripheralsWithServices:@[[CBUUID UUIDWithString:ServiceUUID]]];
+    [self.connectedList addObjectsFromArray:arr];
+    self.lightList = [NSMutableArray array];
+    self.currentModel = nil;
+    if(arr.count>0)
+    {
+        NSLog(@"arr.count>0");
+        for (CBPeripheral* periphe in arr)
+        {
+            if (periphe != nil)
+            {
+                periphe.delegate = self;
+                [self.manager connectPeripheral:periphe options:nil];
+                
+            }
+        }
+    }
+
     self.scanResultBlock = [block copy];
 }
 
@@ -198,24 +218,11 @@
 -(void)centralManager:(CBCentralManager *)central didDiscoverPeripheral:(CBPeripheral *)peripheral advertisementData:(NSDictionary *)advertisementData RSSI:(NSNumber *)RSSI{
 
     NSLog(@"didDiscoverPeripheral %@",peripheral.name);
-    
-    BOOL isexit = NO;
-    
-    if ([peripheral.name hasPrefix:@"N"]) {
+    if ([peripheral.name hasPrefix:@"N"] || [peripheral.name hasPrefix:@"P"]) {
         
-        for (CBPeripheral *per in _discoverPeripherals) {
-            
-            if ([peripheral.identifier.UUIDString isEqualToString:per.identifier.UUIDString]) {
-                
-                isexit = YES;
-            }
-        }
-        if (!isexit) {
-            
-            [_discoverPeripherals addObject:peripheral];
-        }
-        
-        self.scanResultBlock(_discoverPeripherals);
+        [self.connectedList addObject:peripheral];
+        [_manager connectPeripheral:peripheral
+                            options:@{CBConnectPeripheralOptionNotifyOnConnectionKey:@(0)}];
         
     }
     
@@ -239,33 +246,44 @@
 - (void)centralManager:(CBCentralManager *)central didDisconnectPeripheral:(CBPeripheral *)peripheral error:(NSError *)error{
     
      NSLog(@"断开设备 %@",peripheral.name);
-//
-    if ([self.connectedList containsObject:peripheral]) {
-        
-        [self.connectedList removeObject:peripheral];
-    }
+    
+    [self.lightList enumerateObjectsUsingBlock:^(DataModel *mo, NSUInteger idx, BOOL * _Nonnull stop) {
+        if ([mo.uuid isEqualToString:[peripheral.identifier UUIDString]]) {
+            [self.lightList removeObject:mo];
+        }
+    }];
+    
+    self.scanResultBlock(_lightList);
+    
+    
     dispatch_source_t timer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, dispatch_get_main_queue());
     dispatch_source_set_timer(timer, DISPATCH_TIME_NOW, 3 * NSEC_PER_SEC, 0 * NSEC_PER_SEC);
     dispatch_source_set_event_handler(timer, ^{
         
-        [self startconnectWithPeripheral:peripheral block:^(BOOL isSuccess, NSError *error, DataModel *model) {
+        NSLog(@"dispatch_source_set_timer");
+        
+        NSArray *arr = [self.manager retrieveConnectedPeripheralsWithServices:@[[CBUUID UUIDWithString:ServiceUUID]]];
+        
+        if(arr.count>0)
+        {
+            NSLog(@"arr.count>0");
+            dispatch_source_cancel(timer);
             
-            if (isSuccess) {
-                
-                dispatch_source_cancel(timer);
+            for (CBPeripheral* periphe in arr)
+            {
+                if (periphe != nil)
+                {
+                    periphe.delegate = self;
+                    [self.manager connectPeripheral:periphe options:nil];
+                    
+                }
             }
-            
-        }];
+        }
+
         
     });
     dispatch_resume(timer);
-    
-    
-    
-    
-    
-    
-    
+
 //    [[NSNotificationCenter defaultCenter]postNotificationName:@"DidDlePeripheral" object:[peripheral.identifier UUIDString]];
     
 
@@ -333,17 +351,36 @@
 
     }
     //写入时间
-    [self writePeripheral:peripheral characteristic:char2 value:[self hexToBytesWith:@"0105"]];
-    NSString *datestr = [[NSDate date]formatDateString:@"YYYYMMddHHmm"];
-    NSString *str = [datestr substringFromIndex:2];
-    [self writePeripheral:peripheral characteristic:char1 value:[self hexToBytesWith:str]];
+//    [self writePeripheral:peripheral characteristic:char2 value:[self hexToBytesWith:@"0105"]];
+//    NSString *datestr = [[NSDate date]formatDateString:@"YYYYMMddHHmm"];
+//    NSString *str = [datestr substringFromIndex:2];
+//    [self writePeripheral:peripheral characteristic:char1 value:[self hexToBytesWith:str]];
 
     DataModel *model = [[DataModel alloc]init];
+    model.uuid = [peripheral.identifier UUIDString];
     model.cbPeripheral = peripheral;
     model.cbCharacteristc1 = char1;
     model.cbCharacteristc2 = char2;
     
-    [_lightList addObject:model];
+    BOOL exit = NO;
+    for (DataModel *mod in self.lightList) {
+        
+        if ([mod.uuid isEqualToString:model.uuid]) {
+            
+            exit = YES;
+            break;
+        }
+    }
+    
+    
+    if (!exit) {
+        [_lightList addObject:model];
+    }
+    
+    self.currentModel = model;
+    
+    self.scanResultBlock(_lightList);
+    
     if (self.connectPeripheralResultBlock) {
         
         self.connectPeripheralResultBlock(YES,nil,model);
