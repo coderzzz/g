@@ -12,12 +12,14 @@
 #import "RecordViewController.h"
 #import "AppDelegate.h"
 #import "BatteryViewController.h"
-@interface GameViewController ()<UITableViewDelegate,UITableViewDataSource>
+#import "gCell.h"
+@interface GameViewController ()<UITableViewDelegate,UITableViewDataSource,gCellDelegate,UIPickerViewDelegate,UIPickerViewDataSource>
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollview;
 @property (strong, nonatomic) IBOutlet UIView *contentview;
 @property (weak, nonatomic) IBOutlet UIView *funtionview;
 @property (weak, nonatomic) IBOutlet UIButton *datebtn;
-@property (weak, nonatomic) IBOutlet UITableView *tableview;
+@property (weak, nonatomic) IBOutlet UIPickerView *picker;
+
 
 @property (weak, nonatomic) IBOutlet UIView *top;
 @property (strong, nonatomic) IBOutlet UIView *timev;
@@ -30,6 +32,7 @@
 {
     NSInteger select;
     NSMutableArray *list;
+    NSMutableArray *selectArray;
 }
 - (IBAction)cancle:(id)sender {
     
@@ -39,9 +42,16 @@
 - (IBAction)done:(id)sender {
     
     self.timev.hidden = YES;
+    selectArray= [@[@"",@"",@"",@"",@""]mutableCopy];
+
+    for (int a=0; a<5; a++) {
+        
+        NSInteger row = [self.picker selectedRowInComponent:a];
+        [selectArray replaceObjectAtIndex:a withObject:list[a][row]];
+    }
     
-    NSString *str = [list[select] componentsJoinedByString:@""];
-    NSLog(@"%@",str);
+    NSString *str = [selectArray componentsJoinedByString:@""];
+    NSLog(@"selectArray= %@",str);
     
     //写入时间
     DataModel *model = [ZZBluetoothManger shareInstance].currentModel;
@@ -78,9 +88,7 @@
     [dele.window addSubview:self.timev];
     
     self.top.backgroundColor = BaseColor;
-    self.tableview.backgroundColor = [UIColor whiteColor];
-    
-    
+       
     if (self.view.frame.size.height >450) {
         
         self.contentview.frame  = CGRectMake(0, 0, ScreenWidth, ScreenHeight-64-49);
@@ -107,59 +115,56 @@
         NSString *str = [datestr substringFromIndex:2];
         NSArray *temp = [str componentsSeparatedByString:@"-"];
         list = [NSMutableArray array];
-        for (int a=0; a<4; a++) {
+        selectArray= [@[@"",@"",@"",@"",@""]mutableCopy];
+        NSString *ye = temp[0];
+        NSMutableArray *years = [NSMutableArray array];
+        for (int a=0; a<20; a++) {
             
-            NSMutableArray *ary = [@[]mutableCopy];
-            int year = [temp[0] intValue];
-            [ary addObject:[NSString stringWithFormat:@"%d",year+a]];
+            [years addObject:[NSString stringWithFormat:@"%d",[ye intValue]+a]];
             
-            int monuth = [temp[1] intValue];
-            if ((monuth + a)>12) {
-                
-                NSString *str =[NSString stringWithFormat:@"%d",(monuth + a) -12];
-                [ary addObject:[self addst:str]];
-
-            }else{
-                NSString *str =[NSString stringWithFormat:@"%d",(monuth + a)];
-                [ary addObject:[self addst:str]];
-            }
-            
-            int day = [temp[2] intValue];
-            if ((day + a)>30) {
-                
-                NSString *str =[NSString stringWithFormat:@"%d",(day + a) -30];
-                [ary addObject:[self addst:str]];
-                
-            }else{
-                
-                NSString *str =[NSString stringWithFormat:@"%d",(day + a)];
-                [ary addObject:[self addst:str]];
-            }
-
-            int hour = [temp[3] intValue];
-            if ((hour + a)>23) {
-                
-                NSString *str =[NSString stringWithFormat:@"%d",(hour + a) -24];
-                [ary addObject:[self addst:str]];
-                
-            }else{
-                
-                NSString *str =[NSString stringWithFormat:@"%d",(hour + a)];
-                [ary addObject:[self addst:str]];            }
-
-            int sec = [temp[4] intValue];
-            if ((sec + a)>60) {
-                
-                NSString *str =[NSString stringWithFormat:@"%d",(sec + a) -60];
-                [ary addObject:[self addst:str]];
-            }else{
-                
-                NSString *str =[NSString stringWithFormat:@"%d",(sec + a)];
-                [ary addObject:[self addst:str]];
-            }
-            [list addObject:ary];
         }
-        [self.tableview reloadData];
+        NSMutableArray *mons = [NSMutableArray array];
+        for (int a=1; a<13; a++) {
+            
+            NSString *mon =[NSString stringWithFormat:@"%d",a];
+            
+            [mons addObject:[self addst:mon]];
+            
+        }
+        NSMutableArray *days = [NSMutableArray array];
+        for (int a=1; a<31; a++) {
+            
+            NSString *day =[NSString stringWithFormat:@"%d",a];
+            
+            [days addObject:[self addst:day]];
+            
+        }
+        
+        NSMutableArray *hours = [NSMutableArray array];
+        for (int a=0; a<24; a++) {
+            
+            NSString *day =[NSString stringWithFormat:@"%d",a];
+            
+            [hours addObject:[self addst:day]];
+            
+        }
+        
+        NSMutableArray *mins = [NSMutableArray array];
+        for (int a=0; a<60; a++) {
+            
+            NSString *day =[NSString stringWithFormat:@"%d",a];
+            
+            [mins addObject:[self addst:day]];
+            
+        }
+        list =[@[years,mons,days,hours,mins]mutableCopy];
+        [self.picker reloadAllComponents];
+        [self.picker selectRow:0 inComponent:0 animated:NO];
+        [self.picker selectRow:[temp[1] intValue]-1 inComponent:1 animated:NO];
+        [self.picker selectRow:[temp[2] intValue]-1 inComponent:2 animated:NO];
+        [self.picker selectRow:[temp[3] intValue] inComponent:3 animated:NO];
+        [self.picker selectRow:[temp[4] intValue] inComponent:4 animated:NO];
+       
     }
     else if ( sender.tag == 6){
 
@@ -183,33 +188,97 @@
         
     }
 }
-
-#pragma mark UITableViewDataSource
-
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)sectio{
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView{
     
-    return list.count;
+    return 5;
+    
 }
-
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+// returns the # of rows in each component..
+- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component{
     
-    UITableViewCell *cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"c"];
-    NSMutableArray *temp = list[indexPath.row];
-    if (select == indexPath.row) {
+    return [list[component] count];
+    
+}
+#pragma mark UIPickerViewDelegate
+- (NSAttributedString *)pickerView:(UIPickerView *)pickerView attributedTitleForRow:(NSInteger)row forComponent:(NSInteger)component{
+    
+    NSString *str = [self titleForRow:row forComponent:component];
+    UIFont* font = [UIFont fontWithName:@"Helvetica" size:14.0];
+    NSDictionary * attrDic = @{NSForegroundColorAttributeName:BaseColor,
+                               NSFontAttributeName:font};
+    
+    NSAttributedString * attrString = [[NSAttributedString alloc] initWithString:str attributes:attrDic];
+    return attrString;
+}
+- (UIView *)pickerView:(UIPickerView *)pickerView viewForRow:(NSInteger)row forComponent:(NSInteger)component reusingView:(UIView *)view{
+    UILabel* pickerLabel = (UILabel*)view;
+    if (!pickerLabel){
+        pickerLabel = [[UILabel alloc] init];
+        [pickerLabel setTextAlignment:NSTextAlignmentCenter];
+        [pickerLabel setBackgroundColor:[UIColor clearColor]];
+        [pickerLabel setFont:[UIFont boldSystemFontOfSize:13]];
+    }
+    // Fill the label text here
+    pickerLabel.attributedText=[self pickerView:pickerView attributedTitleForRow:row forComponent:component];
+    return pickerLabel;
+}
+- (NSString *)titleForRow:(NSInteger)row forComponent:(NSInteger)component{
+    
+    if (component == 0) {
         
-        cell.textLabel.textColor = BaseColor;
-        cell.contentView.backgroundColor=  [UIColor colorWithRed:0.0/255.0 green:178.0/255.0 blue:156.0/255.0 alpha:.3];
+        return [NSString stringWithFormat:@"20%@年",list[component][row]];
     }
-    else{
-        cell.textLabel.textColor =[UIColor darkGrayColor];
+    if (component == 1) {
+        
+        return [NSString stringWithFormat:@"%@月",list[component][row]];
     }
-    cell.textLabel.text = [NSString stringWithFormat:@"20%@年   %@月   %@日   %@时    %@分",temp[0],[self addst:temp[1]],[self addst:temp[2]],[self addst:temp[3]],[self addst:temp[4]]];
-    cell.textLabel.textAlignment = NSTextAlignmentCenter;
-    return cell;
+    if (component == 2) {
+        
+        return [NSString stringWithFormat:@"%@日",list[component][row]];
+    }
+    if (component == 3) {
+        
+        return [NSString stringWithFormat:@"%@小时",list[component][row]];
+    }
+    return [NSString stringWithFormat:@"%@分钟",list[component][row]];
+    
 }
 
+- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component{
+    
+   // [selectArray replaceObjectAtIndex:component withObject:list[component][row]];
+}
+//#pragma mark gCellDelegate 
+//- (void)didSelectBtn:(UIButton *)btn{
+//    
+//    NSLog(@"%@",btn);
+//    select = btn.superview.tag;
+//    [self.tableview reloadData];
+//    
+//    
+//    
+//    
+//}
+//#pragma mark UITableViewDataSource
+//
+//
+//- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)sectio{
+//    
+//    return list.count;
+//}
+//
+//
+//- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+//    
+//    gCell *cell =[tableView dequeueReusableCellWithIdentifier:@"gcell"];
+//    cell.delegate = self;
+//    cell.contentView.tag = indexPath.row;
+//    [cell setCellTextWithList:list[indexPath.row]];
+//    [cell setBgColorWihtSelect:(select==indexPath.row)];
+//    
+//    return cell;
+//}
+//
 - (NSString *)addst:(NSString *)s{
     
     if (s.length==1) {
@@ -217,21 +286,21 @@
     }
     return s;
 }
-
-
-#pragma mark UITableViewDelegate
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    
-    return 50;
-}
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-    select = indexPath.row;
-    [self.tableview reloadData];
-    
-}
-
-
+//
+//
+//#pragma mark UITableViewDelegate
+//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    
+//    return 50;
+//}
+//
+//- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+//    
+//    select = indexPath.row;
+//    [self.tableview reloadData];
+//    
+//}
+//
+//
 @end

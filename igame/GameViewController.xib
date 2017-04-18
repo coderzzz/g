@@ -14,8 +14,8 @@
                 <outlet property="contentview" destination="rYY-Xb-MgJ" id="7BD-25-exc"/>
                 <outlet property="datebtn" destination="J0H-4F-bDl" id="Rjk-O7-HbQ"/>
                 <outlet property="funtionview" destination="8ne-As-FAC" id="t8b-70-TOm"/>
+                <outlet property="picker" destination="MHg-f2-IIT" id="aJ8-at-aCv"/>
                 <outlet property="scrollview" destination="cej-TI-TZd" id="KJX-70-FOR"/>
-                <outlet property="tableview" destination="KlK-Mp-cfC" id="dZ7-hK-gYj"/>
                 <outlet property="timev" destination="d9r-gF-oOI" id="TYD-cc-T2D"/>
                 <outlet property="top" destination="qXO-Ui-PfJ" id="Zwb-vN-d8c"/>
                 <outlet property="usebtn" destination="Cna-Hy-ayU" id="KX7-ph-kDZ"/>
@@ -244,17 +244,6 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="KlK-Mp-cfC">
-                    <rect key="frame" x="0.0" y="364" width="320" height="204"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="204" id="y6O-yG-yHq"/>
-                    </constraints>
-                    <connections>
-                        <outlet property="dataSource" destination="-1" id="Gs6-IH-Ac1"/>
-                        <outlet property="delegate" destination="-1" id="oFS-X1-LcK"/>
-                    </connections>
-                </tableView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qXO-Ui-PfJ">
                     <rect key="frame" x="0.0" y="318" width="320" height="50"/>
                     <subviews>
@@ -303,14 +292,25 @@
                         <constraint firstAttribute="height" constant="50" id="oyd-EF-XAj"/>
                     </constraints>
                 </view>
+                <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MHg-f2-IIT">
+                    <rect key="frame" x="0.0" y="365" width="320" height="203"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="203" id="2PC-eg-H8d"/>
+                    </constraints>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="Rx0-Aj-SqQ"/>
+                        <outlet property="delegate" destination="-1" id="rof-Ui-Cv9"/>
+                    </connections>
+                </pickerView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="qXO-Ui-PfJ" secondAttribute="bottom" constant="200" id="1sc-i4-cLk"/>
-                <constraint firstAttribute="trailing" secondItem="KlK-Mp-cfC" secondAttribute="trailing" id="C4s-Ba-Ghw"/>
                 <constraint firstItem="qXO-Ui-PfJ" firstAttribute="leading" secondItem="d9r-gF-oOI" secondAttribute="leading" id="EMq-G9-ROa"/>
-                <constraint firstAttribute="bottom" secondItem="KlK-Mp-cfC" secondAttribute="bottom" id="Hb4-el-4Wx"/>
-                <constraint firstItem="KlK-Mp-cfC" firstAttribute="leading" secondItem="d9r-gF-oOI" secondAttribute="leading" id="RR2-lR-0lE"/>
+                <constraint firstAttribute="trailing" secondItem="MHg-f2-IIT" secondAttribute="trailing" id="N7x-1H-ZlF"/>
+                <constraint firstItem="MHg-f2-IIT" firstAttribute="leading" secondItem="d9r-gF-oOI" secondAttribute="leading" id="cbU-cn-hq8"/>
+                <constraint firstAttribute="bottom" secondItem="MHg-f2-IIT" secondAttribute="bottom" id="hSi-IF-rPe"/>
                 <constraint firstAttribute="trailing" secondItem="qXO-Ui-PfJ" secondAttribute="trailing" id="uJ0-1n-HsN"/>
             </constraints>
             <point key="canvasLocation" x="630" y="223"/>

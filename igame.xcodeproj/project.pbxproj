@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		22319DA81E9FCE3700F9DBC6 /* gCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 22319DA61E9FCE3700F9DBC6 /* gCell.m */; };
+		22319DA91E9FCE3700F9DBC6 /* gCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22319DA71E9FCE3700F9DBC6 /* gCell.xib */; };
 		BC691C148A13B149E36A9421 /* libPods-igame.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D0B95056F9FFD80AB795422C /* libPods-igame.a */; };
 		E217D66D1E794E9900FBD477 /* TypeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E217D66B1E794E9900FBD477 /* TypeViewController.m */; };
 		E217D66E1E794E9900FBD477 /* TypeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E217D66C1E794E9900FBD477 /* TypeViewController.xib */; };
@@ -133,6 +135,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		22319DA51E9FCE3700F9DBC6 /* gCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gCell.h; sourceTree = "<group>"; };
+		22319DA61E9FCE3700F9DBC6 /* gCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = gCell.m; sourceTree = "<group>"; };
+		22319DA71E9FCE3700F9DBC6 /* gCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = gCell.xib; sourceTree = "<group>"; };
 		476DF04FFAB9906FB08E416A /* Pods-igame.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-igame.debug.xcconfig"; path = "Pods/Target Support Files/Pods-igame/Pods-igame.debug.xcconfig"; sourceTree = "<group>"; };
 		4D63B664F0136E1E0AE9F89C /* Pods-igame.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-igame.release.xcconfig"; path = "Pods/Target Support Files/Pods-igame/Pods-igame.release.xcconfig"; sourceTree = "<group>"; };
 		D0B95056F9FFD80AB795422C /* libPods-igame.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-igame.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -640,6 +645,9 @@
 				E225F1491E027D8400A525E9 /* UseTimeCell.h */,
 				E225F14A1E027D8400A525E9 /* UseTimeCell.m */,
 				E225F14B1E027D8400A525E9 /* UseTimeCell.xib */,
+				22319DA51E9FCE3700F9DBC6 /* gCell.h */,
+				22319DA61E9FCE3700F9DBC6 /* gCell.m */,
+				22319DA71E9FCE3700F9DBC6 /* gCell.xib */,
 			);
 			name = GameTab;
 			sourceTree = "<group>";
@@ -792,6 +800,7 @@
 				E2D40F091E2CB6DC0030F069 /* BatteryViewController.xib in Resources */,
 				E2315D621DFE4F2E00907978 /* SignContenCell.xib in Resources */,
 				E246CDA01E011E6E003193E3 /* TimeViewController.xib in Resources */,
+				22319DA91E9FCE3700F9DBC6 /* gCell.xib in Resources */,
 				E2E4103B1DFA9D610056CF3C /* JoinGameViewController.xib in Resources */,
 				E2315D6C1DFE892000907978 /* BlogListViewController.xib in Resources */,
 				E2E410231DF9430B0056CF3C /* LoginCell.xib in Resources */,
@@ -917,6 +926,7 @@
 				E2D40DE41E1F33E60030F069 /* OSHelper.m in Sources */,
 				E246CDA41E012526003193E3 /* TimeCell.m in Sources */,
 				E24323781E07777F00E0782B /* SexViewController.m in Sources */,
+				22319DA81E9FCE3700F9DBC6 /* gCell.m in Sources */,
 				E246CDA91E012B3E003193E3 /* OpenViewController.m in Sources */,
 				E2D40C7D1E1F2FDD0030F069 /* AFHttp.m in Sources */,
 				E2D40E511E1FA8040030F069 /* BattleModel.m in Sources */,
